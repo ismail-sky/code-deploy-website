@@ -1,0 +1,20 @@
+version: 0.2
+
+env:
+  secrets-manager:
+    NPM_REGISTRY_TOKEN: $SECRETS_ID:NPM_REGISTRY_TOKEN
+    SUPER_SECRET_PASSWORD: arn:aws:secretsmanager:eu-west-1:123456789:secret:secrets-name:PASSWORD
+    OTHER_SECRET_PASSWORD: secrets-name:OTHER_PASSWORD
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10
+    commands:
+      - npm install
+  build:
+    commands:
+      - npm run build
+For more details about buildspec check official documentation.
+
+NOTE: Of course IAM role associated wi
